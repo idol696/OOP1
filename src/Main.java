@@ -1,5 +1,5 @@
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         Hogwarts HarryPotter = new Hogwarts("Harry", "Potter", 80, 56);
         Hogwarts HermioneGranger = new Hogwarts("Hermione", "Granger", 56, 87);
