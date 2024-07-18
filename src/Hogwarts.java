@@ -1,8 +1,8 @@
 public class Hogwarts {
-    private final String firstName;
-    private final String lastName;
-    private final int magicPower;
-    private final int transgressionDistance;
+    protected final String firstName;
+    protected final String lastName;
+    protected final int magicPower;
+    protected final int transgressionDistance;
 
     public Hogwarts(String firstName, String lastName, int magicPower, int transgressionDistance) {
         this.firstName = firstName;
@@ -24,19 +24,11 @@ public class Hogwarts {
         return param;
     }
 
-    public void equalsBestHogwarts(Object o) {
+    public void bestStudentHogwarts(Object o) {
         if (this == o) throw new IllegalArgumentException("Это один и тот же ученик!");
         Hogwarts student2;
-        if (o.getClass() == Hogwarts.class) {
+        if (o instanceof Hogwarts) {
             student2 = (Hogwarts) o;
-        } else if (o.getClass() == Gryffindor.class) {
-            student2 = ((Gryffindor) o).getStudent();
-        } else if (o.getClass() == Kogtevran.class) {
-            student2 = ((Kogtevran) o).getStudent();
-        } else if (o.getClass() == Hufflepuff.class) {
-            student2 = ((Hufflepuff) o).getStudent();
-        } else if (o.getClass() == Slytherin.class) {
-            student2 = ((Slytherin) o).getStudent();
         } else {
             throw new IllegalArgumentException("Можно сравнивать силу" +
                     " учеников только между учениками!");

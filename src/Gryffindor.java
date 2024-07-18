@@ -1,25 +1,22 @@
-public class Gryffindor {
-    private Hogwarts student;
+public class Gryffindor extends Hogwarts {
     private final int nobility;
     private final int honor;
     private final int courage;
 
-    public Gryffindor(Hogwarts student, int nobility, int honor, int courage) {
-        if (student != null) this.student = student;
-        this.nobility = CheckParameter(nobility);
-        this.honor = CheckParameter(honor);
-        this.courage = CheckParameter(courage);
+    public Gryffindor(String firstName, String lastName, int magicPower, int transgressionDistance, int nobility,
+                      int honor, int courage) {
+        super(firstName, lastName, magicPower, transgressionDistance);
+        this.nobility = checkParameter(nobility);
+        this.honor = checkParameter(honor);
+        this.courage = checkParameter(courage);
     }
 
     public Gryffindor() {
         throw new IllegalArgumentException("Нельзя создать студента не числящегося в Хогвартсе!");
     }
 
-    public Hogwarts getStudent() {
-        return student;
-    }
 
-    private int CheckParameter(int param) {
+    private int checkParameter(int param) {
         if (param < 0) {
             throw new IllegalArgumentException("Значение не должно быть меньше 0!");
         } else if (param > 100) {
@@ -28,7 +25,7 @@ public class Gryffindor {
         return param;
     }
 
-    public void equalsBestFaculty(Gryffindor student2) {
+    public void bestStudentFaculty(Gryffindor student2) {
         System.out.println("Анализ по Факультету Гриффиндор:");
         int powerStudent1 = getPower();
         int powerStudent2 = student2.getPower();
@@ -41,21 +38,13 @@ public class Gryffindor {
         }
     }
 
-    public void equalsBestHogwarts(Object o) {
-        student.equalsBestHogwarts(o);
-    }
-
     private int getPower() {
         return nobility + honor + courage;
     }
 
-    public String getFullName() {
-        return student.getFullName();
-    }
-
     @Override
     public String toString() {
-        return student.toString() + ", Благородство = " + nobility +
+        return super.toString() + ", Благородство = " + nobility +
                 ", Честь = " + honor +
                 ", Смелость = " + courage;
     }

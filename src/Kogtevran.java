@@ -1,12 +1,12 @@
-public class Kogtevran {
-    private Hogwarts student;
+public class Kogtevran extends Hogwarts {
     private final int smart;
     private final int wise;
     private final int witty;
     private final int creativity;
 
-    public Kogtevran(Hogwarts student, int smart, int wise, int witty, int creativity) {
-        if (student != null) this.student = student;
+    public Kogtevran(String firstName, String lastName, int magicPower, int transgressionDistance, int smart,
+                     int wise, int witty, int creativity) {
+        super(firstName, lastName, magicPower, transgressionDistance);
         this.smart = CheckParameter(smart);
         this.wise = CheckParameter(wise);
         this.witty = CheckParameter(witty);
@@ -15,10 +15,6 @@ public class Kogtevran {
 
     public Kogtevran() {
         throw new IllegalArgumentException("Нельзя создать студента не числящегося в Хогвартсе!");
-    }
-
-    public Hogwarts getStudent() {
-        return student;
     }
 
     private int CheckParameter(int param) {
@@ -30,7 +26,7 @@ public class Kogtevran {
         return param;
     }
 
-    public void equalsBestFaculty(Kogtevran student2) {
+    public void bestStudentFaculty(Kogtevran student2) {
         System.out.println("Анализ по Факультету Когтевран:");
         int powerStudent1 = getPower();
         int powerStudent2 =  student2.getPower();
@@ -44,21 +40,13 @@ public class Kogtevran {
         }
     }
 
-    public String getFullName() {
-        return student.getFullName();
-    }
-
-    public void equalsBestHogwarts(Object o) {
-        student.equalsBestHogwarts(o);
-    }
-
     private int getPower() {
         return smart + wise + witty + creativity;
     }
 
     @Override
     public String toString() {
-        return  student.toString() + ", Ум = " + smart +
+        return  super.toString() + ", Ум = " + smart +
                 ", Мудрость = " + wise +
                 ", Остроумность = " + witty +
                 ", Креативность = " + creativity;

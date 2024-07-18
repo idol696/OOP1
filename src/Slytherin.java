@@ -1,4 +1,4 @@
-public class Slytherin {
+public class Slytherin extends Hogwarts {
     private Hogwarts student;
     private final int cunning;
     private final int determination;
@@ -6,24 +6,20 @@ public class Slytherin {
     private final int resourcefulness;
     private final int authoritativeness;
 
-    public Slytherin(Hogwarts student, int cunning, int determination, int ambition, int resourcefulness, int authoritativeness) {
-        if (student != null) this.student = student;
-        this.cunning = CheckParameter(cunning);
-        this.determination = CheckParameter(determination);
-        this.ambition = CheckParameter(ambition);
-        this.resourcefulness = CheckParameter(resourcefulness);
-        this.authoritativeness = CheckParameter(authoritativeness);
+    public Slytherin(String firstName, String lastName, int magicPower, int transgressionDistance,  int cunning, int determination, int ambition, int resourcefulness, int authoritativeness) {
+        super(firstName, lastName, magicPower, transgressionDistance);
+        this.cunning = checkParameter(cunning);
+        this.determination = checkParameter(determination);
+        this.ambition = checkParameter(ambition);
+        this.resourcefulness = checkParameter(resourcefulness);
+        this.authoritativeness = checkParameter(authoritativeness);
     }
 
     public Slytherin() {
         throw new IllegalArgumentException("Нельзя создать студента не числящегося в Хогвартсе!");
     }
 
-    public Hogwarts getStudent() {
-        return student;
-    }
-
-    private int CheckParameter(int param) {
+    private int checkParameter(int param) {
         if (param < 0) {
             throw new IllegalArgumentException("Значение не должно быть меньше 0!");
         } else if (param > 100) {
@@ -32,7 +28,7 @@ public class Slytherin {
         return param;
     }
 
-    public void equalsBestFaculty(Slytherin student2) {
+    public void bestStudentFaculty(Slytherin student2) {
         System.out.println("Анализ по Факультету Слизерин:");
         int powerStudent1 = getPower();
         int powerStudent2 =  student2.getPower();
@@ -46,21 +42,13 @@ public class Slytherin {
         }
     }
 
-    public void equalsBestHogwarts(Object o) {
-        student.equalsBestHogwarts(o);
-    }
-
-    public String getFullName() {
-        return student.getFullName();
-    }
-
     private int getPower() {
         return cunning + determination + ambition + resourcefulness + authoritativeness;
     }
 
     @Override
     public String toString() {
-        return  student.toString() + ", Хитрость = " + cunning +
+        return  super.toString() + ", Хитрость = " + cunning +
                 ", Целеустремленность = " + determination +
                 ", Амбициозность = " + ambition +
                 ", Находчивость = " + resourcefulness +
