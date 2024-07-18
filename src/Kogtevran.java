@@ -7,17 +7,17 @@ public class Kogtevran extends Hogwarts {
     public Kogtevran(String firstName, String lastName, int magicPower, int transgressionDistance, int smart,
                      int wise, int witty, int creativity) {
         super(firstName, lastName, magicPower, transgressionDistance);
-        this.smart = CheckParameter(smart);
-        this.wise = CheckParameter(wise);
-        this.witty = CheckParameter(witty);
-        this.creativity = CheckParameter(creativity);
+        this.smart = checkParameter(smart);
+        this.wise = checkParameter(wise);
+        this.witty = checkParameter(witty);
+        this.creativity = checkParameter(creativity);
     }
 
     public Kogtevran() {
         throw new IllegalArgumentException("Нельзя создать студента не числящегося в Хогвартсе!");
     }
 
-    private int CheckParameter(int param) {
+    private int checkParameter(int param) {
         if (param < 0) {
             throw new IllegalArgumentException("Значение не должно быть меньше 0!");
         } else if (param > 100) {
