@@ -1,5 +1,4 @@
 public class Slytherin extends Hogwarts {
-    private Hogwarts student;
     private final int cunning;
     private final int determination;
     private final int ambition;
